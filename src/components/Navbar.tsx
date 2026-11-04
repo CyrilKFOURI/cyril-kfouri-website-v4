@@ -71,6 +71,15 @@ export const Navbar: React.FC = () => {
 
   const closeMenu = () => setIsOpen(false);
 
+  // Section links scroll in place: following "#projects" would add a history entry,
+  // so Back would walk through sections instead of leaving the page.
+  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    closeMenu();
+    // Wait for the mobile drawer to release its scroll lock before scrolling.
+    setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }), 0);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
@@ -88,6 +97,7 @@ export const Navbar: React.FC = () => {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(event) => scrollToSection(event, item.href)}
                 className="px-3 py-1 text-xs sm:text-sm font-medium text-neutral-600 hover:text-blue-600 hover:bg-blue-50/70 rounded-md transition-colors"
               >
                 {t(item.labelKey)}
@@ -130,7 +140,7 @@ export const Navbar: React.FC = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    onClick={closeMenu}
+                    onClick={(event) => scrollToSection(event, item.href)}
                     className="flex items-center justify-between px-3 py-2.5 text-base font-medium text-neutral-800 hover:text-neutral-950 hover:bg-neutral-50 rounded-lg transition-colors"
                   >
                     <span>{t(item.labelKey)}</span>
