@@ -1,0 +1,58 @@
+[
+  {
+    "category": "Programming & Languages",
+    "skills": [
+      { "name": "Python", "highlight": true },
+      { "name": "C++", "highlight": true },
+      { "name": "Rust", "highlight": true },
+      { "name": "SQL", "highlight": true },
+      { "name": "C", "highlight": false },
+      { "name": "Java", "highlight": false },
+      { "name": "C#", "highlight": false },
+      { "name": "R", "highlight": false },
+      { "name": "Matlab", "highlight": false }
+    ]
+  },
+  {
+    "category": "Machine Learning & AI",
+    "skills": [
+      { "name": "PyTorch", "highlight": true },
+      { "name": "scikit-learn", "highlight": true },
+      { "name": "TensorFlow", "highlight": true },
+      { "name": "Hugging Face", "highlight": false },
+      { "name": "LangChain", "highlight": false },
+      { "name": "OpenCV", "highlight": false },
+      { "name": "Explainable AI (SHAP / LIME)", "highlight": true }
+    ]
+  },
+  {
+    "category": "Data, BI & Quant",
+    "skills": [
+      { "name": "PySpark", "highlight": true },
+      { "name": "Power BI (DAX / Modeling)", "highlight": true },
+      { "name": "MongoDB", "highlight": false },
+      { "name": "Tableau", "highlight": false },
+      { "name": "Stochastic Modeling", "highlight": true },
+      { "name": "Time Series Forecasting", "highlight": true }
+    ]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "skills": [
+      { "name": "Docker", "highlight": true },
+      { "name": "Git", "highlight": true },
+      { "name": "AWS", "highlight": false },
+      { "name": "GCP", "highlight": false },
+      { "name": "Azure", "highlight": false }
+    ]
+  },
+  {
+    "category": "Languages",
+    "skills": [
+      { "name": "French (Native / C2)", "highlight": false },
+      { "name": "Arabic (Native / C2)", "highlight": false },
+      { "name": "English (Fluent / C1)", "highlight": true },
+      { "name": "Spanish (Intermediate / B2)", "highlight": false }
+    ]
+  }
+]

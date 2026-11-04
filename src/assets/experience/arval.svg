@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect width="120" height="120" rx="24" fill="#00915a"/>
+  <!-- BNP Paribas 4 flying stars/birds -->
+  <g fill="#ffffff">
+    <!-- Star/Bird 1 -->
+    <path d="M 28 82 Q 33 68 46 64 Q 38 72 32 86 Z" />
+    <!-- Star/Bird 2 -->
+    <path d="M 45 62 Q 53 48 68 44 Q 58 54 50 67 Z" />
+    <!-- Star/Bird 3 -->
+    <path d="M 66 43 Q 76 30 92 26 Q 81 37 72 49 Z" />
+    <!-- Star/Bird 4 (top flight) -->
+    <path d="M 88 28 Q 98 16 104 12 Q 100 22 93 33 Z" />
+  </g>
+  <!-- Curved speed line below -->
+  <path d="M 20 86 Q 50 78 78 50" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Wordmark ARVAL -->
+  <text x="60" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">ARVAL</text>
+</svg>

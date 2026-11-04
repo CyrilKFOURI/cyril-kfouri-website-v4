@@ -1,0 +1,65 @@
+{
+  "education": [
+    {
+      "id": "ece-paris",
+      "institution": "ECE Paris",
+      "degree": "Engineering Degree — Master 2",
+      "field": "Data Science & Applied Mathematics",
+      "location": "Paris, France",
+      "period": {
+        "start": "Sept. 2021",
+        "end": "Sept. 2026"
+      },
+      "details": [
+        "Major: Data Science & Applied Mathematics",
+        "Key coursework: Stochastic Calculus, Financial Risk Modeling, Advanced Machine Learning, Deep Learning, Big Data Engineering"
+      ]
+    },
+    {
+      "id": "omnes-london",
+      "institution": "Omnes Education London School",
+      "degree": "Study Abroad Program",
+      "field": "Finance and Management",
+      "location": "London, United Kingdom",
+      "period": {
+        "start": "Sept. 2023",
+        "end": "Dec. 2023"
+      },
+      "details": [
+        "Specialized academic semester in international finance, corporate valuation, and organizational management"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "columbia-financial-engineering",
+      "issuer": "Columbia University",
+      "name": "Introduction to Financial Engineering and Risk Management",
+      "topics": ["Derivatives", "Stochastic processes", "Pricing models", "Risk management"]
+    },
+    {
+      "id": "duke-xai",
+      "issuer": "Duke University",
+      "name": "Explainable AI (XAI) Specialization",
+      "topics": ["Model interpretability", "SHAP", "LIME", "Trustworthy AI"]
+    },
+    {
+      "id": "google-ml-trading",
+      "issuer": "Google",
+      "name": "Machine Learning in Trading and Finance",
+      "topics": ["Portfolio optimization", "Financial ML", "Reinforcement learning", "Algorithmic strategies"]
+    },
+    {
+      "id": "deeplearning-ai-tf",
+      "issuer": "DeepLearning.AI",
+      "name": "TensorFlow Developer Specialization",
+      "topics": ["Computer vision", "NLP", "Time series forecasting", "Deep architectures"]
+    },
+    {
+      "id": "microsoft-powerbi",
+      "issuer": "Microsoft",
+      "name": "Power BI Data Modeling",
+      "topics": ["Star schemas", "DAX", "Power Query", "Data modeling", "Dashboards"]
+    }
+  ]
+}

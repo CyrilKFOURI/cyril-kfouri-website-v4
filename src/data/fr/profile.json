@@ -1,0 +1,13 @@
+{
+  "title": "Data science & mathématiques appliquées",
+  "headline": "Analyste quantitatif & Data Scientist",
+  "tagline": "Master 2 Data Science & Mathématiques appliquées à l’ECE Paris. Spécialisé en analyse quantitative des risques, modélisation financière et stratégies systématiques.",
+  "nationality": "Français",
+  "location": "Paris, France",
+  "bio": [
+    "Élève ingénieur en cinquième année à l’ECE Paris, en Master 2 Data Science & Mathématiques appliquées, avec un semestre d’échange en finance et management à l’Omnes London School.",
+    "Expérience en modélisation quantitative des risques, calcul stochastique, prévision de séries temporelles et machine learning en production chez Arval BNP Paribas et CME.",
+    "Attiré par la modélisation mathématique rigoureuse, les stratégies de trading systématiques et la conception de logiciels robustes et évolutifs."
+  ],
+  "interests": ["Piano", "Échecs", "Psychologie", "Football", "Tennis", "Natation"]
+}

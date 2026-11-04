@@ -1,0 +1,135 @@
+[
+  {
+    "id": "arval-bnp-paribas",
+    "role": "Quantitative Risk Analyst",
+    "company": "Arval BNP Paribas",
+    "companyUrl": "https://www.arval.com",
+    "location": "Paris, France",
+    "type": "Internship",
+    "period": {
+      "start": "Mar. 2026",
+      "end": "Present",
+      "isCurrent": true
+    },
+    "summary": "Benchmarking machine learning challenger models against production risk frameworks and designing an enterprise analytics platform.",
+    "bulletPoints": [
+      "Validated a production risk model by benchmarking it against different machine learning challenger models, and built a macroeconomic statistical forecasting model to strengthen residual-value risk management, including explainability and stress testing.",
+      "Designed an analytics platform for ESG, credit, and asset risk teams, with the definition of more than 100 operational KPIs.",
+      "Developed an agentic RAG chatbot relying on time series models, as well as an internal document base, to help users interpret KPIs."
+    ],
+    "technologies": [
+      "Python",
+      "Machine Learning",
+      "Time Series",
+      "Risk Modeling",
+      "Agentic RAG",
+      "LLM Agents",
+      "Stress Testing"
+    ],
+    "metrics": [
+      { "label": "KPIs Defined", "value": "100+" },
+      { "label": "Model Validation", "value": "Production" }
+    ]
+  },
+  {
+    "id": "cme",
+    "role": "Data Scientist",
+    "company": "CME",
+    "companyUrl": "https://www.gotocme.com",
+    "location": "Beirut, Lebanon",
+    "type": "Internship",
+    "period": {
+      "start": "Apr. 2025",
+      "end": "Aug. 2025",
+      "isCurrent": false
+    },
+    "summary": "Automated ETL pipeline development and predictive time-series models for corporate strategic decision-making.",
+    "bulletPoints": [
+      "Designed an automated ETL pipeline for a Data Warehouse and created management reports with Power BI.",
+      "Designed descriptive and predictive machine learning models on KPIs, which helped reshape strategic corporate decisions."
+    ],
+    "technologies": [
+      "Python",
+      "Data Warehouse",
+      "ETL",
+      "Power BI",
+      "Time Series",
+      "Scikit-learn",
+      "SQL"
+    ],
+    "metrics": [
+      { "label": "Pipeline Automation", "value": "100%" }
+    ]
+  },
+  {
+    "id": "junior-entreprise-ece",
+    "role": "Technical Lead",
+    "company": "Junior-Entreprise ECE",
+    "location": "Paris, France",
+    "type": "Consultant",
+    "period": {
+      "start": "Feb. 2025",
+      "end": "Present",
+      "isCurrent": true
+    },
+    "summary": "Leading AI document processing tools for PDF and image OCR, automated table extraction, and structured database ingestion.",
+    "bulletPoints": [
+      "Developed an AI tool for processing PDF and image documents to extract text and complex tables.",
+      "Classified and structured the extracted data, then ingested it into a database for business use."
+    ],
+    "technologies": [
+      "Python",
+      "Computer Vision",
+      "OCR",
+      "NLP",
+      "SQL",
+      "Database Ingestion"
+    ]
+  },
+  {
+    "id": "intech",
+    "role": "Fullstack Developer",
+    "company": "Intech-Sal-Offshore",
+    "location": "Jounieh, Lebanon",
+    "type": "Internship",
+    "period": {
+      "start": "Jun. 2024",
+      "end": "Aug. 2024",
+      "isCurrent": false
+    },
+    "summary": "High-performance backend architecture development in Rust and MongoDB query optimization.",
+    "bulletPoints": [
+      "Developed back-end architectures in Rust and optimized MongoDB queries to speed up data processing and throughput."
+    ],
+    "technologies": [
+      "Rust",
+      "MongoDB",
+      "REST APIs",
+      "Backend Architecture",
+      "Performance Tuning"
+    ]
+  },
+  {
+    "id": "icc-group",
+    "role": "Frontend Developer",
+    "company": "ICC Group",
+    "location": "Beirut, Lebanon",
+    "type": "Internship",
+    "period": {
+      "start": "Dec. 2023",
+      "end": "Feb. 2024",
+      "isCurrent": false
+    },
+    "summary": "Modern web interface engineering with ReactJS and advanced state management.",
+    "bulletPoints": [
+      "Developed web interfaces in ReactJS with advanced state management, improving responsiveness for smooth navigation."
+    ],
+    "technologies": [
+      "ReactJS",
+      "JavaScript",
+      "State Management",
+      "UI/UX",
+      "Responsive Web"
+    ]
+  }
+]

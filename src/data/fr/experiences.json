@@ -1,0 +1,61 @@
+{
+  "arval-bnp-paribas": {
+    "role": "Analyste risque quantitatif",
+    "location": "Paris, France",
+    "period": { "start": "mars 2026", "end": "aujourd’hui", "isCurrent": true },
+    "summary": "Comparaison de modèles de machine learning challengers avec les modèles de risque en production, et conception d’une plateforme d’analyse pour l’entreprise.",
+    "bulletPoints": [
+      "Validation d’un modèle de risque en production en le comparant à plusieurs modèles challengers de machine learning, et construction d’un modèle statistique de prévision macroéconomique pour renforcer la gestion du risque de valeur résiduelle, avec explicabilité et stress tests.",
+      "Conception d’une plateforme d’analyse pour les équipes risque ESG, crédit et actifs, avec la définition de plus de 100 KPI opérationnels.",
+      "Développement d’un chatbot RAG agentique s’appuyant sur des modèles de séries temporelles et une base documentaire interne, pour aider les utilisateurs à interpréter les KPI."
+    ],
+    "technologies": ["Python", "Machine learning", "Séries temporelles", "Modélisation du risque", "RAG agentique", "Agents LLM", "Stress tests"],
+    "metrics": [
+      { "label": "KPI définis", "value": "100+" },
+      { "label": "Validation de modèle", "value": "En production" }
+    ]
+  },
+  "cme": {
+    "role": "Data Scientist",
+    "location": "Beyrouth, Liban",
+    "period": { "start": "avr. 2025", "end": "août 2025", "isCurrent": false },
+    "summary": "Développement d’un pipeline ETL automatisé et de modèles prédictifs de séries temporelles pour les décisions stratégiques de l’entreprise.",
+    "bulletPoints": [
+      "Conception d’un pipeline ETL automatisé pour un entrepôt de données et création de rapports de gestion sous Power BI.",
+      "Conception de modèles de machine learning descriptifs et prédictifs sur les KPI, qui ont contribué à réorienter des décisions stratégiques de l’entreprise."
+    ],
+    "technologies": ["Python", "Entrepôt de données", "ETL", "Power BI", "Séries temporelles", "Scikit-learn", "SQL"],
+    "metrics": [{ "label": "Automatisation du pipeline", "value": "100 %" }]
+  },
+  "junior-entreprise-ece": {
+    "role": "Responsable technique",
+    "location": "Paris, France",
+    "period": { "start": "févr. 2025", "end": "aujourd’hui", "isCurrent": true },
+    "summary": "Pilotage d’outils IA de traitement de documents : OCR de PDF et d’images, extraction automatique de tableaux et intégration structurée en base de données.",
+    "bulletPoints": [
+      "Développement d’un outil IA de traitement de documents PDF et d’images pour en extraire le texte et des tableaux complexes.",
+      "Classement et structuration des données extraites, puis intégration dans une base de données pour un usage métier."
+    ],
+    "technologies": ["Python", "Vision par ordinateur", "OCR", "NLP", "SQL", "Intégration en base de données"]
+  },
+  "intech": {
+    "role": "Développeur full-stack",
+    "location": "Jounieh, Liban",
+    "period": { "start": "juin 2024", "end": "août 2024", "isCurrent": false },
+    "summary": "Développement d’architectures back-end performantes en Rust et optimisation de requêtes MongoDB.",
+    "bulletPoints": [
+      "Développement d’architectures back-end en Rust et optimisation de requêtes MongoDB pour accélérer le traitement des données et augmenter le débit."
+    ],
+    "technologies": ["Rust", "MongoDB", "API REST", "Architecture back-end", "Optimisation des performances"]
+  },
+  "icc-group": {
+    "role": "Développeur front-end",
+    "location": "Beyrouth, Liban",
+    "period": { "start": "déc. 2023", "end": "févr. 2024", "isCurrent": false },
+    "summary": "Développement d’interfaces web modernes en ReactJS avec une gestion d’état avancée.",
+    "bulletPoints": [
+      "Développement d’interfaces web en ReactJS avec une gestion d’état avancée, pour une navigation plus fluide et réactive."
+    ],
+    "technologies": ["ReactJS", "JavaScript", "Gestion d’état", "UI/UX", "Web responsive"]
+  }
+}

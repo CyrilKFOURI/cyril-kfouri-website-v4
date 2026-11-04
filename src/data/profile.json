@@ -1,0 +1,29 @@
+{
+  "name": "Cyril KFOURI",
+  "title": "Data Science & Applied Mathematics",
+  "headline": "Quantitative Analyst & Data Scientist",
+  "tagline": "Master 2 in Data Science & Applied Mathematics at ECE Paris. Focused on quantitative risk analysis, financial modeling, and systematic strategies.",
+  "nationality": "French",
+  "location": "Paris, France",
+  "email": "cyrilkfouri@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/cyril-kfouri/",
+  "github": "https://github.com/CyrilKFOURI",
+  "projectsOverviewUrl": "https://cyril-kfouri-3d-show.vercel.app",
+  "bio": [
+    "Fifth-year engineering student at ECE Paris pursuing a Master 2 in Data Science & Applied Mathematics, with specialized exchange coursework in Finance & Management at Omnes London School.",
+    "Experienced in quantitative risk modeling, stochastic calculus, time series forecasting, and production machine learning at Arval BNP Paribas and CME.",
+    "Driven by rigorous mathematical modeling, systematic trading strategies, and engineering robust, scalable software."
+  ],
+  "interests": [
+    "Piano",
+    "Chess",
+    "Psychology",
+    "Football",
+    "Tennis",
+    "Swimming"
+  ],
+  "cv": {
+    "en": "/Cyril_KFOURI_Resume.pdf",
+    "fr": "/Cyril_KFOURI_CV.pdf"
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "01-sigma-hedge": {
+    "title": "Σ-Hedge : plateforme B2B de couverture actions par collar",
+    "context": "Plateforme quant institutionnelle",
+    "subtitle": "Aide une entreprise ou un assureur qui détient une grosse position en actions à choisir, valoriser, tester et documenter une couverture par collar, avec des chiffres entièrement traçables.",
+    "summary": "Un collar plafonne le gain sur une position en actions en échange d’un plancher sur la perte. Σ-Hedge permet à un trésorier d’entreprise, à la gestion actif-passif d’un assureur ou à un structureur d’en concevoir un, de le valoriser avec plusieurs modèles indépendants, de rejouer son comportement sur des années de marché en le renouvelant dans le temps, et de remettre à un auditeur un rapport vérifiable chiffre par chiffre.",
+    "metrics": [
+      {
+        "label": "Contrôles de validation",
+        "value": "~284 face à QuantLib/mpmath"
+      },
+      {
+        "label": "Tests automatisés",
+        "value": "~1 259"
+      },
+      {
+        "label": "Déclencheurs de roll",
+        "value": "Calendrier · moneyness · delta"
+      },
+      {
+        "label": "Contrôles de surapprentissage",
+        "value": "PBO · Deflated Sharpe"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [
+          "Les pricers d’options (Bloomberg OVME, tableurs des banques) valorisent une opération à un instant donné. Σ-Hedge répond à la vraie question d’un trésorier : cette politique de couverture aurait-elle fonctionné dans le temps, et puis-je prouver les chiffres ?"
+        ],
+        "bulletPoints": [
+          "Teste toute la politique de couverture, pas une seule opération : le collar est renouvelé automatiquement selon des déclencheurs de calendrier, de moneyness ou de delta, avec des délais de carence et une bande d’hystérésis pour éviter le sur-trading, sans aucune information future, et avec la raison de chaque renouvellement enregistrée.",
+          "Signale quand un backtest est trop beau pour être vrai : la probabilité de surapprentissage (PBO), le Deflated Sharpe ratio et la durée minimale d’historique accompagnent chaque résultat, des statistiques que les outils de pricing ne donnent pas.",
+          "Chaque chiffre exporté est validé : les résultats portent un badge (validé, partiel, échoué) lié à environ 284 contrôles face à QuantLib et à mpmath haute précision, exécutés sur la version exacte qui les a produits.",
+          "Prêt pour l’audit dès la conception : tables d’audit en ajout seul imposées par la base de données, empreintes SHA-256 sur les résultats, et un classeur Excel d’audit reproductible à l’octet près.",
+          "Prévient quand la réponse est fragile : le solveur de strike à coût nul signale une solution mal déterminée au lieu de renvoyer silencieusement un strike trompeur."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Pricing : Black-Scholes de trois façons (formule fermée, EDP Crank-Nicolson, Monte Carlo), options américaines, et modèle de volatilité stochastique de Heston avec calibration.",
+          "Smiles de volatilité : ajustements SVI et SSVI avec contrôles d’absence d’arbitrage butterfly et calendaire.",
+          "Courbes de taux construites à partir des données BCE, €STR, SOFR, SONIA et du Trésor américain, mises à jour par un planificateur avec relances.",
+          "Risque : VaR et CVaR avec intervalles de confiance, drawdown, efficacité de la couverture, grecques du portefeuille et matrice de stress en réévaluation complète.",
+          "Couche entreprise : espaces multi-sociétés, rôles, SSO et double authentification, et un parcours guidé en 7 étapes qui marque les étapes suivantes comme périmées quand une donnée change.",
+          "Rapports : note PDF pour le conseil d’administration et classeur Excel d’audit."
+        ]
+      }
+    ],
+    "galleryCaptions": [
+      "Pricer d’options et calibration de la surface de volatilité",
+      "Backtest du collar dynamique et attribution du P&L"
+    ]
+  },
+  "02-financial-data-analysis-app": {
+    "title": "Financial Data Analysis Workbench (FDA)",
+    "context": "Poste de travail d’analyse quant et marchés",
+    "subtitle": "Un poste de travail de recherche financière où des modèles avancés de séries temporelles, multivariés et de risque tournent en un clic, avec leurs paramètres choisis automatiquement.",
+    "summary": "Dans un notebook, lancer un test de cointégration de Johansen ou un modèle GARCH demande d’écrire du code et de choisir les paramètres à la main. FDA transforme environ 230 analyses de ce type sur actions, ETF, crypto, devises et taux en panneaux prêts à l’emploi : on choisit un actif, on clique, et le modèle revient ajusté, avec des paramètres déduits des données. Tout se passe dans une seule interface rapide, des données de marché jusqu’au rapport partageable.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "Séries temporelles",
+      "Économétrie",
+      "DuckDB",
+      "Redis",
+      "MCP"
+    ],
+    "metrics": [
+      {
+        "label": "Analyses",
+        "value": "~230"
+      },
+      {
+        "label": "Paramètres des modèles",
+        "value": "Automatiques (AIC/BIC)"
+      },
+      {
+        "label": "Contrôles de backtest",
+        "value": "DSR · PBO · CPCV"
+      },
+      {
+        "label": "Accès IA",
+        "value": "Serveur MCP"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [
+          "Excel et les terminaux couvrent les bases ; les notebooks couvrent tout, mais lentement. FDA vise l’entre-deux : des méthodes quant de niveau recherche avec la rapidité d’un tableau de bord."
+        ],
+        "bulletPoints": [
+          "Paramètres choisis pour vous : ordres ARIMA, retards des tests, retards VAR pour la causalité de Granger, nombre de ruptures structurelles, famille de copule et d* de différenciation fractionnaire sont sélectionnés à partir des données (AIC/BIC, vraisemblance, recherches), si bien qu’un modèle complexe tourne en un clic.",
+          "Rapide et fluide : les résultats sont mis en cache selon leur contenu, les calculs lourds tournent en arrière-plan, et les analyses s’ouvrent côte à côte dans des panneaux ancrés, avec une palette de commandes Ctrl+K.",
+          "Analyses multivariées de niche, prêtes à l’emploi : cointégration d’Engle-Granger et de Johansen avec ratios de couverture par filtre de Kalman, causalité de Granger, copules avec dépendance de queue, absorption ratio par ACP, modèles à facteurs Fama-French et Carhart, études d’événements.",
+          "Des marchés simulés pour séparer le signal du hasard : les résultats sont comparés à des données synthétiques (distributions nulles par bootstrap et GBM, valeurs critiques par marche aléatoire pour les tests de bulle), et des trajectoires d’Ornstein-Uhlenbeck simulées fixent les niveaux de take-profit et de stop-loss.",
+          "Des backtests fiables : Deflated Sharpe ratio à partir d’un compteur d’essais impossible à remettre à zéro, probabilité de surapprentissage, validation croisée purgée combinatoire et détecteur d’information future.",
+          "Un machine learning pensé pour les marchés : labels à triple barrière, K-fold purgé avec embargo et test placebo sur labels mélangés, d’après López de Prado.",
+          "Analyste IA : chaque analyse est accessible aux agents IA via MCP, et chaque chiffre cité par l’assistant est vérifié par rapport au résultat réel."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Séries temporelles : tests de stationnarité (ADF, KPSS, Zivot-Andrews), mémoire longue (Hurst, GPH), famille GARCH, changements de régime de Markov, filtre de Kalman, ruptures structurelles et détection de bulles (SADF, GSADF).",
+          "Risque : 4 modèles de VaR/ES plus simulation historique filtrée et théorie des valeurs extrêmes, backtestés avec Kupiec, Christoffersen et le feu tricolore de Bâle.",
+          "Portefeuille : nettoyage de covariance Ledoit-Wolf et par matrices aléatoires, Black-Litterman, HRP, optimisation CVaR et parité de risque.",
+          "Données : Yahoo Finance, dépôts SEC XBRL, FRED, BCE, CoinGecko et la base de Ken French.",
+          "La démo en ligne fait tourner le moteur Python directement dans le navigateur (Pyodide)."
+        ]
+      }
+    ],
+    "galleryCaptions": [
+      "Vue Marchés : tableau multi-actifs et rendements par classe d’actifs, dans la démo navigateur"
+    ]
+  },
+  "03-aura-hft": {
+    "title": "AURA-HFT : pipeline FPGA tick-to-trade",
+    "context": "Accélération matérielle & HFT",
+    "subtitle": "Un pipeline de trading sur FPGA qui transforme un paquet de données de marché NASDAQ en ordre en 29 cycles d’horloge en simulation, vérifié sur de vraies données de bourse.",
+    "summary": "Les sociétés de trading haute fréquence exécutent leur logique sur FPGA parce que le logiciel est trop lent et trop imprévisible. AURA-HFT construit toute la chaîne en SystemVerilog : lire le flux de la bourse, reconstruire le carnet d’ordres, calculer un signal, appliquer les contrôles de risque et envoyer l’ordre. Ce qui le distingue, ce sont les preuves : rejoué sur de vraies données NASDAQ, limites de risque prouvées mathématiquement, et chaque chiffre de performance suivi honnêtement.",
+    "tags": [
+      "SystemVerilog",
+      "FPGA",
+      "NASDAQ ITCH 5.0",
+      "OUCH 5.0",
+      "Vérification formelle",
+      "cocotb",
+      "Verilator",
+      "C++20"
+    ],
+    "metrics": [
+      {
+        "label": "Tick-to-trade",
+        "value": "29 cycles (simulé)"
+      },
+      {
+        "label": "Vraies données NASDAQ",
+        "value": "215 674 messages · 0 écart"
+      },
+      {
+        "label": "Propriétés de risque",
+        "value": "6 prouvées formellement"
+      },
+      {
+        "label": "Horloge",
+        "value": "156,25 MHz"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [
+          "La plupart des projets open source de trading sur FPGA s’arrêtent à un parseur et à un banc de test synthétique. Celui-ci est validé de bout en bout sur de vraies données de bourse."
+        ],
+        "bulletPoints": [
+          "Vérifié sur de vraies données NASDAQ : le carnet d’ordres matériel correspond à un modèle de référence sur 215 674 messages réels (AAPL, MSFT, TSLA), sans aucun écart sur les meilleurs prix ni sur les 5 premiers niveaux. La référence elle-même a été recoupée avec la bibliothèque MeatPy sur 20 millions de messages.",
+          "Des limites de risque prouvées, pas seulement testées : kill switch, taille maximale, collier de prix et limites de notionnel sont prouvés par k-induction pour toute séquence d’entrées possible, et des versions volontairement cassées de la logique sont détectées.",
+          "Un signal sans division : le déséquilibre du carnet compare des volumes multipliés en croix au lieu de diviser, ce qui évite un diviseur matériel lent.",
+          "Des chiffres honnêtes : un registre liste chaque chiffre avec la façon dont il a été obtenu et retire les anciens chiffres gonflés.",
+          "Matériel contre logiciel, mesuré : une version C++20 du même pipeline correspond au matériel bit pour bit sur 426 961 événements réels, ce qui donne une comparaison CPU à armes égales.",
+          "Une recherche honnête : la stratégie de déséquilibre du carnet est backtestée et perd de l’argent après coûts dans les 36 configurations testées, et le rapport le dit."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [
+          "Pipeline : traitement des paquets MoldUDP64 (trous et doublons écartés) → parseur ITCH 5.0 → stockage des ordres par hachage → carnet par niveau de prix avec top 5 exact → signal de déséquilibre → contrôle de risque pré-trade en deux étages → ordre OUCH 5.0 en sortie."
+        ],
+        "bulletPoints": [
+          "Vérification : Verilator et cocotb face à un modèle de référence en Python, captures réelles de paquets IEX, 10 scénarios d’injection de fautes, le tout sous Docker avec intégration continue à chaque push.",
+          "Aussi développés : un driver Linux UIO en C++20 et un tableau de bord FastAPI + React pour le rejeu et la télémétrie."
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Statut : la carte cible est l’AMD Kria KR260. La latence provient de la simulation ; la fermeture de timing sous Vivado, le bitstream et la mesure sur carte ne sont pas encore faits."
+        }
+      }
+    ],
+    "galleryCaptions": [
+      "Tableau de bord de rejeu matériel et télémétrie du carnet d’ordres L2"
+    ]
+  },
+  "04-data-explorer": {
+    "title": "Data Explorer : analyse statistique autonome & AutoML",
+    "context": "Moteur Python et web open source",
+    "subtitle": "Importez un jeu de données et obtenez l’analyse qu’un statisticien ferait : les bons tests, les tailles d’effet, les séries temporelles, le ML et les données synthétiques, expliqués simplement.",
+    "summary": "Les outils de profilage comme ydata-profiling affichent des graphiques mais vous laissent les statistiques ; les notebooks demandent du code. Data Explorer choisit le bon test pour chaque paire de variables, vérifie ses conditions, écarte les découvertes dues au hasard et explique le résultat en langage clair. L’application locale complète ajoute l’AutoML, la génération de données synthétiques et un assistant IA dans la même interface.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React 19",
+      "Statistiques",
+      "AutoML",
+      "Séries temporelles",
+      "Données synthétiques",
+      "Pyodide"
+    ],
+    "metrics": [
+      {
+        "label": "Modèles de ML",
+        "value": "~40"
+      },
+      {
+        "label": "Fausses découvertes",
+        "value": "Benjamini-Hochberg"
+      },
+      {
+        "label": "Tailles d’effet",
+        "value": "Sur chaque test"
+      },
+      {
+        "label": "Démo en ligne",
+        "value": "100 % dans le navigateur"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Pas de fausses découvertes : avec des centaines de paires de variables, certaines passent p < 0,05 par chance. Chaque lien est évalué selon sa taille d’effet et une p-valeur corrigée par Benjamini-Hochberg, pour ne présenter que les vrais résultats.",
+          "Le bon test, conditions vérifiées : le test suit le type des colonnes, le test de Levene choisit entre ANOVA et Welch, le test exact de Fisher remplace le χ² quand les effectifs sont trop faibles, et chaque test donne une taille d’effet (d de Cohen, V de Cramér, η²).",
+          "Un AutoML qui s’explique : il écarte les identifiants, les colonnes presque vides et colinéaires, détecte les fuites de la cible et justifie chaque décision en une phrase ; il propose ensuite une sélection de modèles avec la raison de chaque choix.",
+          "Données synthétiques et machine learning dans une seule interface : générez des données synthétiques à partir de votre jeu de données et construisez des modèles sans changer d’outil.",
+          "Un assistant IA qui ne peut pas inventer de chiffres : il utilise les 25 outils d’analyse de l’application, et tout chiffre de sa réponse absent des résultats est signalé. Seules des statistiques résumées sont envoyées au modèle, jamais les lignes brutes.",
+          "Confidentiel par défaut : la démo en ligne exécute Python en WebAssembly, votre fichier ne quitte jamais la page."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Distributions : 5 tests de normalité, 13 lois ajustées et classées par AIC/BIC, aperçus Box-Cox et Yeo-Johnson, 4 règles de valeurs aberrantes.",
+          "Relations : Pearson, Spearman, Kendall, t de Welch, Mann-Whitney, ANOVA, Kruskal-Wallis, χ² et Fisher, plus une matrice de corrélation entre colonnes de types différents.",
+          "Séries temporelles : stationnarité (ADF, KPSS, Zivot-Andrews), tendance (Mann-Kendall, Sen), tests de saisonnalité, points de rupture (PELT, CUSUM, Chow), décomposition STL/MSTL et prévisions ETS/ARIMA avec backtests.",
+          "Machine learning : environ 40 modèles, du linéaire à XGBoost, LightGBM et CatBoost, optimisés avec Optuna et expliqués avec SHAP et la dépendance partielle.",
+          "Un rapport HTML en un seul fichier, et le moteur est aussi utilisable comme bibliothèque Python."
+        ],
+        "callout": {
+          "type": "info",
+          "text": "La démo en ligne est la version navigateur : le machine learning, les données synthétiques et l’assistant IA sont dans l’application locale complète. La démo met 1 à 2 minutes à se charger la première fois."
+        }
+      }
+    ],
+    "galleryCaptions": [
+      "Vue d’ensemble du jeu de données et profil des distributions par colonne",
+      "Assistant IA dont les chiffres sont vérifiés",
+      "Décomposition et prévision de séries temporelles"
+    ]
+  },
+  "05-real-estate-analytics-fr": {
+    "title": "Real Estate Analytics France : économétrie sur données ouvertes",
+    "context": "Plateforme d’analyse économétrique",
+    "subtitle": "Indique ce que vaut un bien immobilier en France et si le louer est rentable, à partir des données publiques, avec une marge d’erreur honnête.",
+    "summary": "Des sites comme MeilleursAgents donnent une estimation de prix ; l’explorateur officiel DVF liste les ventes passées. Cette application va plus loin pour un investisseur : une estimation avec une fourchette calibrée et les raisons du prix, des loyers rapprochés du même type de bien, un score de risque par commune, et une simulation complète de l’investissement après impôts selon les règles françaises.",
+    "tags": [
+      "Python",
+      "DuckDB",
+      "LightGBM",
+      "SHAP",
+      "Expo",
+      "React Native",
+      "Données ouvertes",
+      "MapLibre"
+    ],
+    "metrics": [
+      {
+        "label": "Erreur médiane",
+        "value": "16,0 % (799 000 ventes)"
+      },
+      {
+        "label": "Fourchette à 80 %",
+        "value": "Couvre 79,8 %"
+      },
+      {
+        "label": "Régimes fiscaux",
+        "value": "4 comparés"
+      },
+      {
+        "label": "Données",
+        "value": "7 sources officielles"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Une estimation avec une marge honnête : chaque prix est accompagné d’une fourchette à 80 % vérifiée sur des ventes ultérieures que le modèle n’a jamais vues (elle en couvre 79,8 %), et du détail de ce qui a fait monter ou baisser le prix.",
+          "Une précision publiée : sur 799 000 ventes ultérieures, l’erreur médiane est de 16,0 %, contre 18,2 % pour une régression hédonique classique et 20,6 % pour la moyenne de la commune.",
+          "Des rendements comparables : les loyers sont rapprochés des ventes du même type, de la même surface et du même état, jusqu’à la section cadastrale, au lieu d’une moyenne communale.",
+          "La fiscalité française, calculée : compare micro-foncier, régime réel, LMNP micro-BIC et LMNP réel, puis donne un TRI après impôts à la revente, avec les abattements sur la plus-value et la règle 2025 sur les amortissements LMNP.",
+          "Des risques que la plupart des sites ne montrent pas : un score par commune à partir de la vacance, de la démographie et de l’emploi, et le calendrier d’interdiction de location selon le DPE (G en 2025, F en 2028, E en 2034).",
+          "Fiable par construction : un chiffre est masqué sous 10 ventes et signalé sous 30, et les ventes individuelles ne sont jamais publiées."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Données : ventes DVF, carte des loyers ANIL 2025, recensement et revenus INSEE, DPE de l’ADEME, taux d’imposition locaux, observatoires des loyers et les 71 communes en encadrement des loyers.",
+          "Modèle : LightGBM sur le prix au m², avec des variables de localisation calculées pour qu’une vente ne voie jamais son propre prix ; une version compacte tourne dans le navigateur.",
+          "Simulateur : crédit, cash-flow, rendement net, DSCR, règle des 35 % d’endettement (HCSF), taux d’occupation d’équilibre et tableau de sensibilité taux × prix.",
+          "Une seule base de code Expo pour le web, iOS et Android, une carte interactive, et une extension de navigateur qui analyse une annonce en un clic."
+        ]
+      }
+    ],
+    "galleryCaptions": [
+      "Vue Marché : prix au m² par département, chiffres clés et évolution des prix"
+    ]
+  },
+  "06-15-raspberry-pi-project": {
+    "title": "Caméra de suivi intelligente : support panoramique IA embarquée",
+    "context": "IA embarquée & robotique",
+    "subtitle": "Un support de caméra fait maison qui suit votre visage et obéit aux gestes de la main, entièrement hors ligne sur un Raspberry Pi et un Arduino.",
+    "summary": "Les stabilisateurs et webcams à suivi automatique comme OBSBOT ou Pivo sont des boîtes fermées pilotées par une application. Ce support est construit avec quelques pièces bon marché et fonctionne sans application ni cloud : le Raspberry Pi voit, l’Arduino actionne le moteur, et l’Arduino met le support en sécurité si le Pi s’arrête.",
+    "tags": [
+      "Python",
+      "C++",
+      "Raspberry Pi 4",
+      "Arduino Nano",
+      "MediaPipe",
+      "OpenCV",
+      "FastAPI",
+      "WebSockets"
+    ],
+    "metrics": [
+      {
+        "label": "Boucle de contrôle",
+        "value": "~30 Hz"
+      },
+      {
+        "label": "Sécurité",
+        "value": "Watchdog de 400 ms"
+      },
+      {
+        "label": "Modes de contrôle",
+        "value": "Visage · geste · IR · web"
+      },
+      {
+        "label": "Cloud",
+        "value": "Aucun (100 % hors ligne)"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Ce qui le rend différent",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Deux cerveaux, avec sécurité : la vision tourne sur le Pi et le contrôle moteur sur l’Arduino ; si le Pi se tait pendant 400 ms, l’Arduino gare la caméra tout seul.",
+          "Des commandes sans écran : main ouverte pour suivre, poing pour mettre en pause, signe V pour recentrer, chaque geste confirmé sur 3 images pour éviter les faux déclenchements.",
+          "Reprise en main humaine : une télécommande IR prend la main immédiatement et la rend à l’IA après 12 s d’inactivité ; un bouton rotatif règle la vitesse du moteur.",
+          "Sait quand vous êtes parti : un capteur à ultrasons met le support en veille après 45 s sans personne au bureau et le réveille quand quelqu’un s’approche à moins de 60 cm.",
+          "Fluide, pas saccadé : un correcteur PD avec zone morte et vitesse limitée à 90°/s empêche le servo d’osciller.",
+          "Entièrement hors ligne : la détection du visage et des mains (MediaPipe) tourne sur le Pi, et un cockpit web diffuse la vidéo et la télémétrie en direct sur le réseau local."
+        ]
+      },
+      {
+        "title": "Ce qu’il contient",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Matériel : Raspberry Pi 4, Arduino Nano, servo SG90 (axe panoramique), récepteur IR, capteur à ultrasons, écran LCD et buzzer.",
+          "Liaison entre les cartes : messages série de type NMEA avec somme de contrôle à 115 200 bauds.",
+          "Logiciel : Python (OpenCV, MediaPipe, FastAPI avec WebSocket et MJPEG) sur le Pi, firmware C++ sur l’Arduino, démarrage automatique avec systemd."
+        ]
+      }
+    ],
+    "galleryCaptions": [
+      "Montage complet et mécanisme panoramique",
+      "Arduino Nano avec capteurs sur la breadboard"
+    ]
+  }
+}

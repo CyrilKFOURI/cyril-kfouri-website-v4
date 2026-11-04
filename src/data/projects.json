@@ -1,0 +1,534 @@
+[
+  {
+    "id": "01-sigma-hedge",
+    "slug": "sigma-hedge",
+    "title": "Σ-Hedge: B2B Equity Collar Hedging Platform",
+    "subtitle": "Helps a company or insurer holding a large stock position choose, price, test and document a collar hedge, with every number traceable.",
+    "category": "quantitative-finance",
+    "featured": true,
+    "order": 1,
+    "context": "Institutional Quant Platform",
+    "summary": "A collar caps the gain on a stock position in exchange for a floor on the loss. Σ-Hedge lets a corporate treasurer, an insurer's ALM desk or a structurer design one, price it with several independent models, replay how it would have behaved when rolled over years of market data, and hand an auditor a report that can be re-checked figure by figure.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "Heston",
+      "Monte Carlo",
+      "PDE",
+      "Backtesting",
+      "PostgreSQL"
+    ],
+    "metrics": [
+      {
+        "label": "Validation checks",
+        "value": "~284 vs QuantLib/mpmath"
+      },
+      {
+        "label": "Automated tests",
+        "value": "~1,259"
+      },
+      {
+        "label": "Roll triggers",
+        "value": "Calendar · moneyness · delta"
+      },
+      {
+        "label": "Overfitting checks",
+        "value": "PBO · Deflated Sharpe"
+      }
+    ],
+    "links": [
+      {
+        "type": "github",
+        "label": "Repository (Private)",
+        "url": "https://github.com/CyrilKFOURI/sigma-hedge"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/sigma_hedge_pricer.png",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/sigma_hedge_pricer.png",
+          "caption": "Σ-Hedge Institutional Option Pricer & Volatility Surface Calibration Interface"
+        },
+        {
+          "type": "image",
+          "url": "/src/assets/projects/sigma_hedge_backtest.png",
+          "caption": "Σ-Hedge Dynamic Collar Backtesting & P&L Attribution Analytics"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [
+          "Option pricers (Bloomberg OVME, bank spreadsheets) price one trade at one moment. Σ-Hedge answers the question a treasurer actually has: would this hedging policy have worked over time, and can I prove the numbers?"
+        ],
+        "bulletPoints": [
+          "Tests the whole hedging policy, not one trade: the collar is rolled automatically on calendar, moneyness or delta triggers, with cooldowns and a hysteresis band so it does not over-trade, strict no look-ahead, and a logged reason for every roll.",
+          "Tells you when a backtest is too good to be true: Probability of Backtest Overfitting, Deflated Sharpe ratio and minimum track-record length come with every result, statistics that pricing tools do not report.",
+          "Every exported number is validated: results carry a badge (validated, partial, failed) tied to about 284 checks against QuantLib and high-precision mpmath, run on the exact build that produced them.",
+          "Audit-ready by design: append-only audit tables enforced by the database, SHA-256 fingerprints on results, and an Excel audit workbook that is byte-for-byte reproducible.",
+          "Warns when the answer is fragile: the zero-cost strike solver flags a poorly determined solution instead of silently returning a misleading strike."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Pricing: Black-Scholes three ways (closed form, Crank-Nicolson PDE, Monte Carlo), American options, and the Heston stochastic-volatility model with calibration.",
+          "Volatility smiles: SVI and SSVI fits with butterfly and calendar no-arbitrage checks.",
+          "Rate curves bootstrapped from ECB, €STR, SOFR, SONIA and US Treasury data, refreshed by a scheduler with retries.",
+          "Risk: VaR and CVaR with confidence intervals, drawdown, hedge effectiveness, portfolio Greeks and a full-revaluation stress matrix.",
+          "Enterprise layer: multi-company workspaces, roles, SSO and two-factor login, and a 7-step guided workflow that marks later steps out of date when an input changes.",
+          "Reporting: a PDF board memo and the Excel audit workbook."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "02-financial-data-analysis-app",
+    "slug": "financial-data-analysis-app",
+    "title": "Financial Data Analysis Workbench (FDA)",
+    "subtitle": "A financial research workbench where advanced time-series, multivariate and risk models run in one click, with their settings picked automatically.",
+    "category": "quantitative-finance",
+    "featured": true,
+    "order": 2,
+    "context": "Quant & Market Analysis Workbench",
+    "summary": "In a notebook, running a Johansen cointegration test or a GARCH model means writing code and choosing parameters by hand. FDA turns about 230 such analyses on stocks, ETFs, crypto, FX and rates into ready-made panels: pick an asset, click, and the model comes back fitted, with its settings chosen from the data. Everything lives in one fast interface, from market data to a shareable report.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "Time Series",
+      "Econometrics",
+      "DuckDB",
+      "Redis",
+      "MCP"
+    ],
+    "metrics": [
+      {
+        "label": "Analyses",
+        "value": "~230"
+      },
+      {
+        "label": "Model settings",
+        "value": "Auto (AIC/BIC)"
+      },
+      {
+        "label": "Backtest checks",
+        "value": "DSR · PBO · CPCV"
+      },
+      {
+        "label": "AI access",
+        "value": "MCP server"
+      }
+    ],
+    "links": [
+      {
+        "type": "live",
+        "label": "Live Demo",
+        "url": "https://fda-workbench-demo-cyril-kfouri.vercel.app"
+      },
+      {
+        "type": "github",
+        "label": "Repository (Private)",
+        "url": "https://github.com/CyrilKFOURI/financial-data-analysis-app"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/fda_home.jpg",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/fda_home.jpg",
+          "caption": "Markets overview: cross-asset table and asset-class returns, running in the browser demo"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [
+          "Excel and terminals cover the basics; notebooks cover anything, but slowly. FDA targets the gap: research-grade quant methods with the speed of a dashboard."
+        ],
+        "bulletPoints": [
+          "Settings chosen for you: ARIMA orders, test lags, VAR lags for Granger causality, the number of structural breaks, the copula family and the fractional-differencing d* are selected from the data (AIC/BIC, likelihood, searches), so a complex model runs in about one click.",
+          "Fast and fluid: results are cached by content, heavy jobs run in a background worker, and analyses open side by side in docked panels with a Ctrl+K command palette.",
+          "Niche multivariate analyses, ready to use: Engle-Granger and Johansen cointegration with Kalman hedge ratios, Granger causality, copulas with tail dependence, PCA absorption ratio, Fama-French and Carhart factor models, event studies.",
+          "Simulated markets to separate signal from luck: results are compared with synthetic data (bootstrap and GBM null distributions, random-walk critical values for bubble tests), and simulated Ornstein-Uhlenbeck paths set take-profit and stop-loss levels.",
+          "Backtests you can trust: Deflated Sharpe ratio from a trial count that cannot be reset, Probability of Backtest Overfitting, combinatorial purged cross-validation and a look-ahead detector.",
+          "Machine learning built for markets: triple-barrier labels, purged K-fold with embargo and a shuffled-label placebo test, following López de Prado.",
+          "AI analyst: every analysis is exposed to AI agents through MCP, and each number the assistant cites is checked against the actual result."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Time series: stationarity tests (ADF, KPSS, Zivot-Andrews), long memory (Hurst, GPH), the GARCH family, Markov regime switching, Kalman filter, structural breaks and bubble detection (SADF, GSADF).",
+          "Risk: 4 VaR/ES models plus filtered historical simulation and extreme-value theory, backtested with Kupiec, Christoffersen and the Basel traffic light.",
+          "Portfolio: Ledoit-Wolf and random-matrix covariance cleaning, Black-Litterman, HRP, CVaR and risk-parity optimisation.",
+          "Data: Yahoo Finance, SEC XBRL filings, FRED, ECB, CoinGecko and the Ken French library.",
+          "The live demo runs the Python engine directly in the browser (Pyodide)."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "03-aura-hft",
+    "slug": "aura-hft",
+    "title": "AURA-HFT: FPGA Tick-to-Trade Pipeline",
+    "subtitle": "An FPGA trading pipeline that turns a NASDAQ market-data packet into an order in 29 clock cycles in simulation, checked against real exchange data.",
+    "category": "quantitative-finance",
+    "featured": true,
+    "order": 3,
+    "context": "Hardware Acceleration & HFT",
+    "summary": "High-frequency firms run trading logic on FPGAs because software is too slow and too unpredictable. AURA-HFT builds the whole chain in SystemVerilog: read the exchange feed, rebuild the order book, compute a signal, run risk checks and send the order. What sets it apart is the proof: replayed on real NASDAQ data, risk limits proved mathematically, and every performance number tracked honestly.",
+    "tags": [
+      "SystemVerilog",
+      "FPGA",
+      "NASDAQ ITCH 5.0",
+      "OUCH 5.0",
+      "Formal Verification",
+      "cocotb",
+      "Verilator",
+      "C++20"
+    ],
+    "metrics": [
+      {
+        "label": "Tick-to-trade",
+        "value": "29 cycles (simulated)"
+      },
+      {
+        "label": "Real NASDAQ data",
+        "value": "215,674 msgs · 0 diff"
+      },
+      {
+        "label": "Risk properties",
+        "value": "6 formally proved"
+      },
+      {
+        "label": "Clock",
+        "value": "156.25 MHz"
+      }
+    ],
+    "links": [
+      {
+        "type": "github",
+        "label": "Repository (Private)",
+        "url": "https://github.com/CyrilKFOURI/aura-hft"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/aura_hft_terminal.jpg",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/aura_hft_terminal.jpg",
+          "caption": "AURA-HFT Hardware Replay & L2 Order Book Live Telemetry Dashboard"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [
+          "Most open-source FPGA trading projects stop at a parser and a synthetic testbench. This one is validated end to end on real exchange data."
+        ],
+        "bulletPoints": [
+          "Checked on real NASDAQ data: the hardware order book matches a reference model on 215,674 real messages (AAPL, MSFT, TSLA) with zero divergence in best prices and top-5 depth. The reference itself was cross-checked against the MeatPy library on 20 million messages.",
+          "Risk limits proved, not just tested: kill switch, maximum size, price collar and notional limits are proved by k-induction for every possible input sequence, and deliberately broken versions of the logic are caught.",
+          "Division-free signal: the order-book imbalance compares cross-multiplied volumes instead of dividing, avoiding a slow hardware divider.",
+          "Honest numbers: a claims registry lists each figure with how it was obtained and withdraws earlier inflated ones.",
+          "Hardware vs software, measured: a C++20 version of the same pipeline matches the hardware bit for bit on 426,961 real events, giving a like-for-like CPU comparison.",
+          "Honest research: the imbalance strategy is backtested and loses money after costs in all 36 configurations tested, and the report says so."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [
+          "Pipeline: MoldUDP64 packet handling (gaps and duplicates dropped) → ITCH 5.0 parser → hashed order store → price-level book with exact top-5 → imbalance signal → two-stage pre-trade risk → OUCH 5.0 order out."
+        ],
+        "bulletPoints": [
+          "Verification: Verilator and cocotb against a Python golden model, real IEX packet captures, 10 fault-injection scenarios, all in Docker with CI on every push.",
+          "Also built: a Linux UIO driver in C++20, and a FastAPI + React dashboard for replay and telemetry."
+        ],
+        "callout": {
+          "type": "info",
+          "text": "Status: target board is the AMD Kria KR260. Latency comes from simulation; Vivado timing closure, the bitstream and on-board measurement are not done yet."
+        }
+      }
+    ]
+  },
+  {
+    "id": "04-data-explorer",
+    "slug": "data-explorer",
+    "title": "Data Explorer: Autonomous Statistical EDA & AutoML",
+    "subtitle": "Upload a dataset and get the analysis a statistician would run: the right tests, effect sizes, time series, ML and synthetic data, explained in plain words.",
+    "category": "data-science",
+    "featured": true,
+    "order": 4,
+    "context": "Open-Source Python & Web Engine",
+    "summary": "Profilers like ydata-profiling show charts but leave the statistics to you; notebooks need code. Data Explorer picks the correct test for each pair of variables, checks its conditions, filters out chance findings and explains the result in plain English. The full local app adds AutoML, synthetic data generation and an AI assistant in the same interface.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React 19",
+      "Statistics",
+      "AutoML",
+      "Time Series",
+      "Synthetic Data",
+      "Pyodide"
+    ],
+    "metrics": [
+      {
+        "label": "ML models",
+        "value": "~40"
+      },
+      {
+        "label": "False discoveries",
+        "value": "Benjamini-Hochberg"
+      },
+      {
+        "label": "Effect sizes",
+        "value": "On every test"
+      },
+      {
+        "label": "Live demo",
+        "value": "100% in-browser"
+      }
+    ],
+    "links": [
+      {
+        "type": "live",
+        "label": "Live Demo",
+        "url": "https://data-explorer-lite.vercel.app"
+      },
+      {
+        "type": "github",
+        "label": "Repository (Public)",
+        "url": "https://github.com/CyrilKFOURI/data-explorer"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/data_explorer_overview.png",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/data_explorer_overview.png",
+          "caption": "Data Explorer Dataset Overview & Column Distribution Profiler"
+        },
+        {
+          "type": "image",
+          "url": "/src/assets/projects/data_explorer_assistant.png",
+          "caption": "Audited AI Data Assistant with Verified Numerical Reasoning"
+        },
+        {
+          "type": "image",
+          "url": "/src/assets/projects/data_explorer_timeseries.png",
+          "caption": "Time Series Decomposition & Forecasting Suite"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [],
+        "bulletPoints": [
+          "No false discoveries: with hundreds of variable pairs, some pass p < 0.05 by luck. Each link is graded on effect size and a Benjamini-Hochberg-corrected p-value, so only real ones are shown as findings.",
+          "The right test, with its conditions checked: the test follows the column types, Levene's test decides between ANOVA and Welch, Fisher's exact test replaces χ² when counts are too small, and every test reports an effect size (Cohen's d, Cramér's V, η²).",
+          "AutoML that explains itself: it drops IDs, near-empty and collinear columns, catches target leakage, and writes one sentence for each decision; it then shortlists models with the reason for each pick.",
+          "Synthetic data and machine learning in one interface: generate synthetic data from your dataset and build models without switching tools.",
+          "An AI assistant that cannot make up numbers: it runs the app's 25 analysis tools, and any figure in its answer that is not in the results gets flagged. Only summary statistics are sent to the model, never raw rows.",
+          "Private by default: the live demo runs Python in WebAssembly, so your file never leaves the page."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Distributions: 5 normality tests, 13 distributions fitted and ranked by AIC/BIC, Box-Cox and Yeo-Johnson previews, 4 outlier rules.",
+          "Relationships: Pearson, Spearman, Kendall, Welch t, Mann-Whitney, ANOVA, Kruskal-Wallis, χ² and Fisher, plus a correlation matrix across mixed column types.",
+          "Time series: stationarity (ADF, KPSS, Zivot-Andrews), trend (Mann-Kendall, Sen), seasonality tests, change points (PELT, CUSUM, Chow), STL/MSTL decomposition and ETS/ARIMA forecasts with backtests.",
+          "Machine learning: about 40 models from linear to XGBoost, LightGBM and CatBoost, tuned with Optuna and explained with SHAP and partial dependence.",
+          "A one-file HTML report, and the engine is also usable as a Python library."
+        ],
+        "callout": {
+          "type": "info",
+          "text": "The live demo is the browser-only version: machine learning, synthetic data and the AI assistant are in the full local app. The demo takes 1–2 minutes to load the first time."
+        }
+      }
+    ]
+  },
+  {
+    "id": "05-real-estate-analytics-fr",
+    "slug": "real-estate-analytics-fr",
+    "title": "Real Estate Analytics France: Open-Data Econometrics",
+    "subtitle": "Tells you what a French property is worth and whether renting it out pays, from official government data, with an honest error margin.",
+    "category": "data-science",
+    "featured": true,
+    "order": 5,
+    "context": "Econometric Data Analytics Platform",
+    "summary": "Sites like MeilleursAgents give a price estimate; the official DVF explorer lists past sales. This app goes further for an investor: a price estimate with a calibrated range and the reasons behind it, rents matched to the same kind of property, a risk score for each town, and a full after-tax investment simulation under French rules.",
+    "tags": [
+      "Python",
+      "DuckDB",
+      "LightGBM",
+      "SHAP",
+      "Expo",
+      "React Native",
+      "Open Data",
+      "MapLibre"
+    ],
+    "metrics": [
+      {
+        "label": "Median error",
+        "value": "16.0% (799k sales)"
+      },
+      {
+        "label": "80% price range",
+        "value": "Covers 79.8%"
+      },
+      {
+        "label": "Tax regimes",
+        "value": "4 compared"
+      },
+      {
+        "label": "Data",
+        "value": "7 official sources"
+      }
+    ],
+    "links": [
+      {
+        "type": "live",
+        "label": "Live Web App",
+        "url": "https://web-build-phi-murex.vercel.app"
+      },
+      {
+        "type": "github",
+        "label": "Repository (Public)",
+        "url": "https://github.com/CyrilKFOURI/real-estate-analytics-fr"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/real_estate_home.jpg",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/real_estate_home.jpg",
+          "caption": "Market view: price per m² by département, key figures and price trend"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [],
+        "bulletPoints": [
+          "An estimate with an honest margin: each price comes with an 80% range checked on later sales the model never saw (it covers 79.8% of them) and a breakdown of what pushed the price up or down.",
+          "Published accuracy: on 799,000 later sales, the median error is 16.0%, against 18.2% for a classic hedonic regression and 20.6% for the town average.",
+          "Like-for-like yields: rents are matched to sales of the same type, size and condition, down to the cadastral section, instead of a town-wide average.",
+          "The French tax maze, computed: compares micro-foncier, régime réel, LMNP micro-BIC and LMNP réel, then gives an after-tax IRR on resale, including capital-gains allowances and the 2025 rule on LMNP depreciation.",
+          "Risks most sites do not show: a score per town from vacancy, population and job trends, and the energy-rating rental ban calendar (G in 2025, F in 2028, E in 2034).",
+          "Reliable by design: a figure is hidden under 10 sales and flagged under 30, and individual sales are never published."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Data: DVF property sales, ANIL rent map 2025, INSEE census and income, ADEME energy ratings, local tax rates, rent observatories and the 71 rent-controlled towns.",
+          "Model: LightGBM on price per m², with location features computed so a sale never sees its own price; a compact version runs in the browser.",
+          "Simulator: loan, cash flow, net yield, DSCR, the 35% debt-ratio rule (HCSF), break-even occupancy and a rate × price sensitivity table.",
+          "One Expo codebase for web, iOS and Android, an interactive map, and a browser extension that analyses listings in one click."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "06-15-raspberry-pi-project",
+    "slug": "15-raspberry-pi-project",
+    "title": "Smart Tracking Camera Rig: Edge AI Pan Mount",
+    "subtitle": "A self-built camera mount that follows your face and obeys hand gestures, running fully offline on a Raspberry Pi and an Arduino.",
+    "category": "creative-tech",
+    "featured": true,
+    "order": 6,
+    "context": "Edge AI & Embedded Robotics",
+    "summary": "Auto-tracking gimbals and webcams like OBSBOT or Pivo are closed boxes driven by an app. This rig is built from a handful of cheap parts and works with no app and no cloud: the Raspberry Pi sees, the Arduino moves the motor, and the Arduino keeps the rig safe if the Pi stops.",
+    "tags": [
+      "Python",
+      "C++",
+      "Raspberry Pi 4",
+      "Arduino Nano",
+      "MediaPipe",
+      "OpenCV",
+      "FastAPI",
+      "WebSockets"
+    ],
+    "metrics": [
+      {
+        "label": "Control loop",
+        "value": "~30 Hz"
+      },
+      {
+        "label": "Fail-safe",
+        "value": "400 ms watchdog"
+      },
+      {
+        "label": "Control modes",
+        "value": "Face · gesture · IR · web"
+      },
+      {
+        "label": "Cloud",
+        "value": "None (fully offline)"
+      }
+    ],
+    "links": [
+      {
+        "type": "github",
+        "label": "Repository (Private)",
+        "url": "https://github.com/CyrilKFOURI/15_Raspberry_Pi_Project"
+      }
+    ],
+    "media": {
+      "thumbnail": "/src/assets/projects/smart_camera_rig.jpg",
+      "gallery": [
+        {
+          "type": "image",
+          "url": "/src/assets/projects/smart_camera_rig.jpg",
+          "caption": "Smart Tracking Camera Rig Complete Hardware Setup & Pan Mechanism"
+        },
+        {
+          "type": "image",
+          "url": "/src/assets/projects/smart_camera_arduino.jpg",
+          "caption": "Arduino Nano ATmega328P Deterministic Motion & Sensor Breadboard Setup"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "What makes it different",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Two brains, fail-safe: vision runs on the Pi and motor control on the Arduino; if the Pi goes silent for 400 ms, the Arduino parks the camera on its own.",
+          "Controls without a screen: open palm to track, fist to pause, V-sign to recentre, each gesture confirmed over 3 frames to avoid false triggers.",
+          "Human override: an IR remote takes over instantly and hands control back to the AI after 12 s idle; a knob sets the motor speed.",
+          "Knows when you are gone: an ultrasonic sensor puts the rig to sleep after 45 s with nobody at the desk and wakes it when someone comes within 60 cm.",
+          "Smooth, not twitchy: a PD controller with a dead zone and a 90°/s speed cap stops the servo from hunting back and forth.",
+          "Fully offline: face and hand detection (MediaPipe) run on the Pi, and a web cockpit streams the video and live telemetry on the local network."
+        ]
+      },
+      {
+        "title": "What's inside",
+        "paragraphs": [],
+        "bulletPoints": [
+          "Hardware: Raspberry Pi 4, Arduino Nano, SG90 servo (pan axis), IR receiver, ultrasonic sensor, LCD screen and buzzer.",
+          "Link between the boards: NMEA-style serial messages with checksums at 115,200 baud.",
+          "Software: Python (OpenCV, MediaPipe, FastAPI with WebSocket and MJPEG) on the Pi, C++ firmware on the Arduino, auto-start with systemd."
+        ]
+      }
+    ]
+  }
+]

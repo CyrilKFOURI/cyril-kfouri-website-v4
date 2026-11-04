@@ -1,0 +1,21 @@
+{
+  "ece-paris": {
+    "degree": "Diplôme d’ingénieur — Master 2",
+    "field": "Data science & mathématiques appliquées",
+    "location": "Paris, France",
+    "period": { "start": "sept. 2021", "end": "sept. 2026" },
+    "details": [
+      "Majeure : data science & mathématiques appliquées",
+      "Cours principaux : calcul stochastique, modélisation des risques financiers, machine learning avancé, deep learning, ingénierie big data"
+    ]
+  },
+  "omnes-london": {
+    "degree": "Semestre d’échange",
+    "field": "Finance et management",
+    "location": "Londres, Royaume-Uni",
+    "period": { "start": "sept. 2023", "end": "déc. 2023" },
+    "details": [
+      "Semestre spécialisé en finance internationale, évaluation d’entreprise et management des organisations"
+    ]
+  }
+}

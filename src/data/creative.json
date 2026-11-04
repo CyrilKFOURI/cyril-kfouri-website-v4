@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "sectionTitle": "Beyond Code & Models",
+  "subtitle": "Classical Piano & Creative Pursuits",
+  "description": "8+ years of classical piano training. Analytical discipline meets expressive interpretation.",
+  "items": [
+    {
+      "id": "piano-showcase",
+      "type": "youtube",
+      "title": "Classical Piano Performance",
+      "subtitle": "Piano Repertoire & Interpretations",
+      "category": "piano",
+      "url": "",
+      "thumbnail": "",
+      "description": "Excerpts from classical and romantic repertoire. Video demonstrations to be linked.",
+      "date": "Ongoing"
+    }
+  ]
+}
