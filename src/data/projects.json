@@ -39,6 +39,11 @@
     ],
     "links": [
       {
+        "type": "live",
+        "label": "Live Demo",
+        "url": "https://sigma-hedge.cyrilkfouri.com"
+      },
+      {
         "type": "github",
         "label": "Repository (Private)",
         "url": "https://github.com/CyrilKFOURI/sigma-hedge"
@@ -133,7 +138,7 @@
       },
       {
         "type": "github",
-        "label": "Repository (Private)",
+        "label": "Repository (Public)",
         "url": "https://github.com/CyrilKFOURI/financial-data-analysis-app"
       }
     ],
@@ -217,7 +222,7 @@
     "links": [
       {
         "type": "github",
-        "label": "Repository (Private)",
+        "label": "Repository (Public)",
         "url": "https://github.com/CyrilKFOURI/aura-hft"
       }
     ],
@@ -488,7 +493,7 @@
     "links": [
       {
         "type": "github",
-        "label": "Repository (Private)",
+        "label": "Repository (Public)",
         "url": "https://github.com/CyrilKFOURI/15_Raspberry_Pi_Project"
       }
     ],
