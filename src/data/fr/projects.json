@@ -55,10 +55,10 @@
     ]
   },
   "02-financial-data-analysis-app": {
-    "title": "Financial Data Analysis Workbench (FDA)",
+    "title": "Holdout : poste de travail d’analyse financière",
     "context": "Poste de travail d’analyse quant et marchés",
     "subtitle": "Un poste de travail de recherche financière où des modèles avancés de séries temporelles, multivariés et de risque tournent en un clic, avec leurs paramètres choisis automatiquement.",
-    "summary": "Dans un notebook, lancer un test de cointégration de Johansen ou un modèle GARCH demande d’écrire du code et de choisir les paramètres à la main. FDA transforme environ 230 analyses de ce type sur actions, ETF, crypto, devises et taux en panneaux prêts à l’emploi : on choisit un actif, on clique, et le modèle revient ajusté, avec des paramètres déduits des données. Tout se passe dans une seule interface rapide, des données de marché jusqu’au rapport partageable.",
+    "summary": "Dans un notebook, lancer un test de cointégration de Johansen ou un modèle GARCH demande d’écrire du code et de choisir les paramètres à la main. Holdout transforme environ 230 analyses de ce type sur actions, ETF, crypto, devises et taux en panneaux prêts à l’emploi : on choisit un actif, on clique, et le modèle revient ajusté, avec des paramètres déduits des données. Tout se passe dans une seule interface rapide, des données de marché jusqu’au rapport partageable.",
     "tags": [
       "Python",
       "FastAPI",
@@ -91,7 +91,7 @@
       {
         "title": "Ce qui le rend différent",
         "paragraphs": [
-          "Excel et les terminaux couvrent les bases ; les notebooks couvrent tout, mais lentement. FDA vise l’entre-deux : des méthodes quant de niveau recherche avec la rapidité d’un tableau de bord."
+          "Excel et les terminaux couvrent les bases ; les notebooks couvrent tout, mais lentement. Holdout vise l’entre-deux : des méthodes quant de niveau recherche avec la rapidité d’un tableau de bord."
         ],
         "bulletPoints": [
           "Paramètres choisis pour vous : ordres ARIMA, retards des tests, retards VAR pour la causalité de Granger, nombre de ruptures structurelles, famille de copule et d* de différenciation fractionnaire sont sélectionnés à partir des données (AIC/BIC, vraisemblance, recherches), si bien qu’un modèle complexe tourne en un clic.",
@@ -116,7 +116,7 @@
       }
     ],
     "galleryCaptions": [
-      "Vue Marchés : tableau multi-actifs et rendements par classe d’actifs, dans la démo navigateur"
+      "Marchés : tableau multi-actifs, portefeuilles et stratégies, dans la démo navigateur"
     ]
   },
   "03-aura-hft": {
@@ -183,14 +183,14 @@
       }
     ],
     "galleryCaptions": [
-      "Tableau de bord de rejeu matériel et télémétrie du carnet d’ordres L2"
+      "Démo navigateur : carnet d’ordres L2, cotations Avellaneda-Stoikov et blotter d’ordres OUCH 5.0"
     ]
   },
   "04-data-explorer": {
-    "title": "Data Explorer : analyse statistique autonome & AutoML",
+    "title": "Quantilo : analyse statistique autonome & AutoML",
     "context": "Moteur Python et web open source",
     "subtitle": "Importez un jeu de données et obtenez l’analyse qu’un statisticien ferait : les bons tests, les tailles d’effet, les séries temporelles, le ML et les données synthétiques, expliqués simplement.",
-    "summary": "Les outils de profilage comme ydata-profiling affichent des graphiques mais vous laissent les statistiques ; les notebooks demandent du code. Data Explorer choisit le bon test pour chaque paire de variables, vérifie ses conditions, écarte les découvertes dues au hasard et explique le résultat en langage clair. L’application locale complète ajoute l’AutoML, la génération de données synthétiques et un assistant IA dans la même interface.",
+    "summary": "Les outils de profilage comme ydata-profiling affichent des graphiques mais vous laissent les statistiques ; les notebooks demandent du code. Quantilo choisit le bon test pour chaque paire de variables, vérifie ses conditions, écarte les découvertes dues au hasard et explique le résultat en langage clair. L’application locale complète ajoute l’AutoML, la génération de données synthétiques et un assistant IA dans la même interface.",
     "tags": [
       "Python",
       "FastAPI",
@@ -249,13 +249,12 @@
       }
     ],
     "galleryCaptions": [
-      "Vue d’ensemble du jeu de données et profil des distributions par colonne",
-      "Assistant IA dont les chiffres sont vérifiés",
-      "Décomposition et prévision de séries temporelles"
+      "Séries temporelles : tendance, saisonnalité, décomposition et ruptures, chaque section s’ouvre sur sa conclusion",
+      "Colonnes : chaque type détecté et expliqué avant le moindre test"
     ]
   },
   "05-real-estate-analytics-fr": {
-    "title": "Real Estate Analytics France : économétrie sur données ouvertes",
+    "title": "SquareYield : économétrie immobilière sur données ouvertes",
     "context": "Plateforme d’analyse économétrique",
     "subtitle": "Indique ce que vaut un bien immobilier en France et si le louer est rentable, à partir des données publiques, avec une marge d’erreur honnête.",
     "summary": "Des sites comme MeilleursAgents donnent une estimation de prix ; l’explorateur officiel DVF liste les ventes passées. Cette application va plus loin pour un investisseur : une estimation avec une fourchette calibrée et les raisons du prix, des loyers rapprochés du même type de bien, un score de risque par commune, et une simulation complète de l’investissement après impôts selon les règles françaises.",
