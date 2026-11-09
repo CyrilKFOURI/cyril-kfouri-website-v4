@@ -73,7 +73,7 @@ export const ProjectsExplorer: React.FC<ProjectsExplorerProps> = ({ onSelectProj
   const sortedProjects = [...content.projects].sort((a, b) => a.order - b.order);
 
   return (
-    <section id="projects" className="py-8 sm:py-10 border-t border-black/[0.06] scroll-mt-14">
+    <section id="projects" className="py-8 sm:py-10 border-t border-black/[0.06]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-3">
         <div>
           <div className="flex items-baseline justify-between gap-4">

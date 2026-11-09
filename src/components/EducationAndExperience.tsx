@@ -15,7 +15,7 @@ export const EducationAndExperience: React.FC<EducationAndExperienceProps> = ({
   const { t, content } = useLanguage();
   const { education, experiences, certifications } = content;
   return (
-    <section id="experience" className="py-6 sm:py-8 border-t border-black/[0.06] bg-neutral-50/30 scroll-mt-14">
+    <section id="experience" className="py-6 sm:py-8 border-t border-black/[0.06] bg-neutral-50/30">
       <div className="max-w-5xl mx-auto px-3 sm:px-5">
         
         {/* Section Title */}
@@ -32,7 +32,7 @@ export const EducationAndExperience: React.FC<EducationAndExperienceProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
           
           {/* LEFT COLUMN: Education & Certifications */}
-          <div id="education" className="space-y-6 scroll-mt-20">
+          <div id="education" className="space-y-6 scroll-mt-4">
             <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-200">
               <GraduationCap className="w-4 h-4 text-emerald-700" />
               <h3 className="text-sm sm:text-base font-bold text-neutral-900 tracking-tight">

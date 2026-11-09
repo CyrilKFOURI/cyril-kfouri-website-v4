@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -22,26 +22,23 @@ const LanguageSwitch: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
 
   return (
-    <div
-      role="group"
-      aria-label={t('nav.language')}
-      className="inline-flex items-center p-0.5 rounded-md bg-neutral-100 border border-neutral-200 text-xs font-mono"
-    >
-      {languages.map((option) => (
-        <button
-          key={option}
-          type="button"
-          lang={option}
-          onClick={() => setLanguage(option)}
-          aria-pressed={language === option}
-          className={`min-w-11 min-h-11 px-2 rounded transition-colors cursor-pointer ${
-            language === option
-              ? 'bg-white text-neutral-950 font-bold shadow-xs'
-              : 'text-neutral-500 hover:text-neutral-900'
-          }`}
-        >
-          {option.toUpperCase()}
-        </button>
+    // Plain text toggle, "EN / FR": the active language is simply darker.
+    <div role="group" aria-label={t('nav.language')} className="inline-flex items-center font-mono text-[12px] tracking-wide">
+      {languages.map((option, index) => (
+        <Fragment key={option}>
+          {index > 0 && <span aria-hidden="true" className="text-neutral-300">/</span>}
+          <button
+            type="button"
+            lang={option}
+            onClick={() => setLanguage(option)}
+            aria-pressed={language === option}
+            className={`min-h-11 min-w-9 px-1.5 transition-colors cursor-pointer ${
+              language === option ? 'text-neutral-900' : 'text-neutral-400 hover:text-neutral-700'
+            }`}
+          >
+            {option.toUpperCase()}
+          </button>
+        </Fragment>
       ))}
     </div>
   );
@@ -50,16 +47,6 @@ const LanguageSwitch: React.FC = () => {
 export const Navbar: React.FC = () => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   useEffect(() => {
     if (!isOpen) return;
     const previousOverflow = document.body.style.overflow;
@@ -81,13 +68,9 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        scrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-black/[0.06] shadow-xs'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
+    // Sits on top of the hero and scrolls away with it: the page is short enough
+    // that a bar following the reader would only take screen space.
+    <nav className="absolute top-0 left-0 right-0 z-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Desktop Navigation Links (the empty span keeps the language switcher right-aligned on mobile) */}
@@ -111,11 +94,11 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               type="button"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(true)}
               className="p-1.5 md:hidden text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 rounded-lg transition-colors focus:outline-none"
-              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-label={t('nav.openMenu')}
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -129,9 +112,20 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="md:hidden fixed inset-x-0 top-14 bottom-0 bg-white/95 backdrop-blur-xl border-t border-black/[0.06] z-40 flex flex-col justify-between p-6 overflow-y-auto"
+            className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl z-50 flex flex-col justify-between px-6 pb-6 overflow-y-auto"
           >
-            <div className="space-y-2 pt-2">
+            {/* The bar scrolls away with the page, so the drawer carries its own close button. */}
+            <div className="space-y-2">
+              <div className="flex h-14 items-center justify-end -mr-2">
+                <button
+                  type="button"
+                  onClick={closeMenu}
+                  className="p-1.5 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 rounded-lg transition-colors focus:outline-none"
+                  aria-label={t('nav.closeMenu')}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
               <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 px-3">
                 {t('nav.navigation')}
               </span>
