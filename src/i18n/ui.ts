@@ -4,13 +4,7 @@
 export const en = {
   'meta.title': 'Cyril KFOURI — Quantitative Analyst & Data Scientist',
 
-  'nav.projects': 'Projects',
-  'nav.experience': 'Experience',
-  'nav.education': 'Education',
-  'nav.navigation': 'Navigation',
   'nav.language': 'Language',
-  'nav.openMenu': 'Open menu',
-  'nav.closeMenu': 'Close menu',
 
   'hero.resume': 'Resume',
   'hero.githubTitle': 'GitHub profile',
@@ -76,13 +70,7 @@ export type UiKey = keyof typeof en;
 export const fr: Record<UiKey, string> = {
   'meta.title': 'Cyril KFOURI — Analyste quantitatif & Data Scientist',
 
-  'nav.projects': 'Projets',
-  'nav.experience': 'Expérience',
-  'nav.education': 'Formation',
-  'nav.navigation': 'Navigation',
   'nav.language': 'Langue',
-  'nav.openMenu': 'Ouvrir le menu',
-  'nav.closeMenu': 'Fermer le menu',
 
   'hero.resume': 'CV',
   'hero.githubTitle': 'Profil GitHub',

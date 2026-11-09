@@ -32,7 +32,7 @@ export const EducationAndExperience: React.FC<EducationAndExperienceProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
           
           {/* LEFT COLUMN: Education & Certifications */}
-          <div id="education" className="space-y-6 scroll-mt-4">
+          <div id="education" className="space-y-6">
             <div className="flex items-center gap-2 pb-1.5 border-b border-neutral-200">
               <GraduationCap className="w-4 h-4 text-emerald-700" />
               <h3 className="text-sm sm:text-base font-bold text-neutral-900 tracking-tight">
