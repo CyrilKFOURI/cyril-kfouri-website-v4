@@ -20,7 +20,7 @@ const groupByCategory = (projects: Project[]) => {
 };
 
 const ProjectCard: React.FC<{ project: Project; onSelect: () => void }> = ({ project, onSelect }) => {
-  const imageSrc = projectImagesMap[project.id] ?? defaultProjectImage;
+  const image = projectImagesMap[project.id] ?? defaultProjectImage;
   const hiddenTagCount = project.tags.length - MAX_CARD_TAGS;
 
   return (
@@ -29,12 +29,12 @@ const ProjectCard: React.FC<{ project: Project; onSelect: () => void }> = ({ pro
       onClick={onSelect}
       className="group w-full text-left flex gap-3 sm:gap-4 p-2.5 sm:p-3 bg-white border border-neutral-200 rounded-lg hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 cursor-pointer"
     >
-      <div className="shrink-0 w-16 h-16 sm:w-32 sm:h-24 rounded-md overflow-hidden bg-neutral-100 border border-neutral-200">
+      <div className={`shrink-0 w-16 h-16 sm:w-32 sm:h-24 rounded-md overflow-hidden border border-neutral-200 ${image.logo ? 'bg-white' : 'bg-neutral-100'}`}>
         <img
-          src={imageSrc}
+          src={image.src}
           alt=""
           loading="lazy"
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${image.logo ? 'object-contain p-2.5 sm:p-5' : 'object-cover'}`}
         />
       </div>
 

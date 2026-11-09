@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#111111" stroke-width="4" stroke-linejoin="miter" stroke-linecap="butt" role="img" aria-label="AURA-HFT">
+  <!-- Ring, echoing the Cyfouri circles -->
+  <circle cx="32" cy="32" r="28"/>
+  <!-- A: apex near the top, legs landing on the ring -->
+  <path d="M14 53.4 L32 10 L50 53.4"/>
+  <!-- Crossbar: one rising clock edge (low on the left, high on the right) -->
+  <path d="M18.7 42 H30 V31 H40.7"/>
+</svg>
