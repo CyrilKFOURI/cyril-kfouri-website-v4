@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProjectsExplorer } from './components/ProjectsExplorer';
@@ -6,16 +6,25 @@ import { ProjectModal } from './components/ProjectModal';
 import { EducationAndExperience } from './components/EducationAndExperience';
 import { ExperienceModal } from './components/ExperienceModal';
 import { useLanguage } from './i18n/LanguageContext';
+import { useRoute } from './routing/useRoute';
 
 export default function App() {
   const { t, content } = useLanguage();
-  // Selections are stored by id so an open modal switches language along with the page.
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
-  const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null);
+  // The open dialog lives in the URL and the browser history (see useRoute), so Back closes it
+  // and never reopens it. Looking the record up on each render also lets it follow a language switch.
+  const { route, open, close, redirectHome } = useRoute();
   const { profile } = content;
 
-  const selectedProject = content.projects.find((project) => project.id === selectedProjectId) ?? null;
-  const selectedExperience = content.experiences.find((experience) => experience.id === selectedExperienceId) ?? null;
+  const selectedProject =
+    route.name === 'project' ? (content.projects.find((project) => project.slug === route.slug) ?? null) : null;
+  const selectedExperience =
+    route.name === 'experience' ? (content.experiences.find((experience) => experience.id === route.id) ?? null) : null;
+
+  // A URL that names nothing (old link, typo) is corrected instead of showing an empty page.
+  const pointsAtNothing = route.name !== 'home' && !selectedProject && !selectedExperience;
+  useEffect(() => {
+    if (pointsAtNothing) redirectHome();
+  }, [pointsAtNothing, redirectHome]);
 
   return (
     <div className="min-h-dvh flex flex-col bg-[#FAFAFA] text-[#111827] selection:bg-emerald-500/20 selection:text-emerald-800">
@@ -23,8 +32,8 @@ export default function App() {
 
       <main className="flex-1">
         <Hero />
-        <ProjectsExplorer onSelectProject={(project) => setSelectedProjectId(project.id)} />
-        <EducationAndExperience onSelectExperience={(experience) => setSelectedExperienceId(experience.id)} />
+        <ProjectsExplorer onSelectProject={(project) => open({ name: 'project', slug: project.slug })} />
+        <EducationAndExperience onSelectExperience={(experience) => open({ name: 'experience', id: experience.id })} />
         {/* Piano section hidden until my own recordings exist; CreativeShowcase is kept ready for them. */}
       </main>
 
@@ -64,12 +73,12 @@ export default function App() {
       {/* Modals for Deep Details */}
       <ProjectModal
         project={selectedProject}
-        onClose={() => setSelectedProjectId(null)}
+        onClose={close}
       />
 
       <ExperienceModal
         experience={selectedExperience}
-        onClose={() => setSelectedExperienceId(null)}
+        onClose={close}
       />
     </div>
   );

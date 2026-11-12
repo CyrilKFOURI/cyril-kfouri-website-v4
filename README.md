@@ -11,6 +11,10 @@ npm run typecheck
 npm run build      # tsc -b && vite build -> dist/
 ```
 
+## Content
+
+All text lives in JSON under `src/data/` (English). French text is in `src/data/fr/`, keyed by the same record ids, and interface labels are in `src/i18n/ui.ts`. The `EN / FR` toggle switches both.
+
 ## Deployment
 
 The GitHub repository is connected to the Vercel project `cyril-kfouri-website-v4`:
